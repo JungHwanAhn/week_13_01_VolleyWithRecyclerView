@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'kr.ac.kumoh.s20180668.week_13_01_volleywithrecyclerview'
+    namespace 'kr.ac.kumoh.s20180668.week_14_01_customlist'
     compileSdk 33
 
     defaultConfig {
-        applicationId "kr.ac.kumoh.s20180668.week_13_01_volleywithrecyclerview"
+        applicationId "kr.ac.kumoh.s20180668.week_14_01_customlist"
         minSdk 21
         targetSdk 33
         versionCode 1

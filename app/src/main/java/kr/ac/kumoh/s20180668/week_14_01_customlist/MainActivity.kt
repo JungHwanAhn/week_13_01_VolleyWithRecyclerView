@@ -1,4 +1,4 @@
-package kr.ac.kumoh.s20180668.week_13_01_volleywithrecyclerview
+package kr.ac.kumoh.s20180668.week_14_01_customlist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kr.ac.kumoh.s20180668.week_13_01_volleywithrecyclerview.databinding.ActivityMainBinding
+import com.android.volley.toolbox.NetworkImageView
+import kr.ac.kumoh.s20180668.week_14_01_customlist.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -39,12 +40,18 @@ class MainActivity : AppCompatActivity() {
 
     inner class SongAdapter: RecyclerView.Adapter<SongAdapter.ViewHolder>() {
         inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-            val txTitle: TextView = itemView.findViewById(android.R.id.text1)
-            val txSinger: TextView = itemView.findViewById(android.R.id.text2)
+            val txTitle: TextView = itemView.findViewById(R.id.text1)
+            val txSinger: TextView = itemView.findViewById(R.id.text2)
+
+            val niImage: NetworkImageView = itemView.findViewById<NetworkImageView>(R.id.image)
+
+            init {
+                niImage.setDefaultImageResId(android.R.drawable.ic_menu_report_image)
+            }
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val view = layoutInflater.inflate(android.R.layout.simple_list_item_2,
+            val view = layoutInflater.inflate(R.layout.item_song,
             parent,
             false)
             return ViewHolder(view)
@@ -53,6 +60,7 @@ class MainActivity : AppCompatActivity() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             holder.txTitle.text = model.list.value?.get(position)?.title ?: null
             holder.txSinger.text = model.list.value?.get(position)?.singer ?: null
+            holder.niImage.setImageUrl(model.getImageUrl(position), model.imageLoader)
         }
 
         override fun getItemCount() = model.list.value?.size ?: 0

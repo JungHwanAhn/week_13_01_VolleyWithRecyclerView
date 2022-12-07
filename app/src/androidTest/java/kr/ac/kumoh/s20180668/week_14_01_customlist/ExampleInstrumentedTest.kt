@@ -1,4 +1,4 @@
-package kr.ac.kumoh.s20180668.week_13_01_volleywithrecyclerview
+package kr.ac.kumoh.s20180668.week_14_01_customlist
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
